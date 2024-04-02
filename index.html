@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">    
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="css/index.css">   
+    <style>
+         .boxImg{
+        width: 24%;
+        height: 250px;
+      }
+    </style> 
+</head>
+<body>
+    <!-- nav bar -->
+    <section id="s02">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active " 
+                             aria-current="page" href="index.html"> 首頁</a>
+                        </li>        
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="search.html">查詢</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="about.html">介紹</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="other.html">其他</a>
+                        </li>                                         
+                    </ul>
+                    <div>
+                        <span class="text-warning h3" id="user_message"></span>
+                        <button class="btn btn-outline-success "
+                        data-bs-toggle="modal" data-bs-target="#loginModal"
+                        id="loginModal_btn">登入</button>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal" id="regModal_btn">註冊</button>
+                        <button class="btn btn-success d-none"  id="logout_btn" >登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <!-- login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1"
+   aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">會員登入</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+           aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="mb-3">
+            <label for="" class="form-label  " >帳號                
+            </label>            
+            <input type="text" class="form-control" id="login_userID">
+            <!-- 正確錯誤 -->
+            <!-- <div class="valid-feedback">正確</div>
+            <div class="invalid-feedback">錯誤</div> -->
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" >密碼                
+            </label>
+            <input type="password" class="form-control" id="login_password">
+        </div>
+                  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="member_x">取消</button>
+          <button type="button" class="btn btn-primary" id="login_btn">確認</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <!-- registerModal -->
+  <div class="modal fade" id="registerModal" tabindex="-1"
+   aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header btn btn-success">
+          <h1 class="modal-title fs-5 " id="exampleModalLabel"
+          style="color: white;">會員註冊</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+           aria-label="Close"></button>
+        </div>
+        <div class="modal-body timeline-s02_reg_btn">
+            <div class="row">
+
+                <div class="col-md-6 ">
+                    <h2 class="mb-3 ">會員守則</h2>
+                    <p class="mb-3 ">                                
+                    不要讓店員爆氣，店內禁止員工打客人
+                    </p>
+                    <p class="mb-3">
+                        請勿用個資作為會員資料
+                    </p>
+                    <p class="mb-3">
+                        請用紙筆紀錄
+                    </p>
+                    <p class="mb-3">
+                        大小寫不要打錯
+                    </p>
+                    <p class="mb-3">
+                        不要用特殊字元
+                    </p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="chk01" name="chk01">
+                        <label class="form-check-label" for="chk01" >
+                            同意
+                        </label>
+                    </div>                           
+                </div>
+                <div class="col-6 myForm" >
+                    <!-- 有用check的欄位，feedback是用js寫入的 -->
+                    <div class="mb-3">
+                        <label for="userID" class="form-label">帳號</label>
+                        <input type="text" class="form-control"  placeholder="帳號字數8-20!" id="userID" name="userID">
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">使用者名稱</label>
+                        <input type="text" class="form-control"  placeholder="使用者名稱1-10" id="username" name="username">
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">密碼</label>
+                        <input type="password" class="form-control" placeholder="密碼字數8-20!" id="password" name="password">
+                        
+                        <div class="valid-feedback">密碼符合規則</div>
+                        <div class="invalid-feedback">密碼不符合規則</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="re_password" class="form-label">確認密碼</label>
+                        <input type="password" class="form-control" placeholder="確認密碼!" id="re_password" name="re_password">
+                        
+                        <div class="valid-feedback">密碼一致</div>
+                        <div class="invalid-feedback">密碼不一致</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="email字數1~30!" id="email" name="email">
+                        <div class="valid-feedback">Email符合規則</div>
+                        <div class="invalid-feedback">Email不符合規則</div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+        <div class="modal-footer">
+            <!-- 設置id 是為了清空表單 -->            
+            <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" id="cancelModal" >取消</button>
+            <button type="button" class="btn btn-primary" id="reg_btn">註冊</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 幻燈片 -->
+  <div class="row flex-row-reverse" id="banner">
+    <img class="boxImg order-1 " src="img/chicken1.jpg"   alt="看不到圖片?" id="bannerImg1">
+    <img class="boxImg order-2" src="img/chicken2.jpg" height="10%" width="10%" id="bannerImg2">
+    <img class="boxImg order-3" src="img/chicken3.jpg" height="10%" width="10%" id="bannerImg3">
+    <img class="boxImg order-4" src="img/chicken4.jpg" height="10%" width="10%" id="bannerImg4">
+  </div>
+ 
+
+  <!-- 注意事項 -->
+    <div class="">
+            
+        <div class="notice-box">
+            <h2 class="text-center box01 d-flex ">注意事項</h2>
+            <ul class="" style="list-style-type: none;">
+                <li>1.本站僅提供商品分類</li>
+                <li>2. 所有留言皆為民眾分享，不準勿噴</li>
+                <li>3.實體商店以外的購買方式請勿提供</li>
+                <li>4.注意隱私，勿留敏感訊息於備註</li>
+                <li>5.目前不提供會員間的交流</li>
+            </ul>
+        </div>
+    </div>
+    
+  <!-- 最新消息 -->
+    <div id="s05">
+        <h1 class="text-center" >最新消息</h1>
+        <div class="">
+            <ul  style="list-style-type: none;" id="index_news">
+                <li>20240301<strong>路人甲 已被停權</strong></li>
+                <li>20240302<strong>二師兄 已新增</strong></li>
+                <li>20240303<strong>豬大骨 已新增</strong></li>
+                <li>20240304<strong>水餃皮 已被停權</strong></li>
+                <li>20240306<strong>韭菜 已被停權</strong></li>
+            </ul>
+        </div>
+    </div>
+
+  <section>
+    <div class="container " >
+        <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link active disabled fw-900"
+               aria-current="page" href="#">Copy right 0303.2024 三咖喵</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">三隻小豬</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">免費比價網</a>
+            </li>
+            
+          </ul>
+    </div>
+ </section>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/index-news.js"></script>
+<script src="js/member.js"></script>
+
+  <script>
+    let bannerImg = document.getElementById("bannerImg1");
+    let bannerImg2 = document.getElementById("bannerImg2");
+    let bannerImg3 = document.getElementById("bannerImg3");
+    let bannerImg4 = document.getElementById("bannerImg4");
+    let currentImageIndex = 0;
+    let imgList = ["img/beef/beef1.jpg" , "img/beef/beef2.jpg","img/beef/beef3.jpg"];
+    let imgList2 = ["img/chicken/chicken1.jpg" , "img/chicken/chicken2.jpg","img/chicken/chicken3.jpg"];
+    let imgList3 = ["img/pig3.jpg" , "img/penguin.jpg","img/duck3.jpg"];
+    let imgList4 = ["img/pig4.jpg" , "img/cloud2.jpg","img/duck4.jpg"];
+
+    function chImg(){ 
+      currentImageIndex ++ ;
+      if (currentImageIndex >= imgList.length){
+        currentImageIndex = 0;
+      }
+      bannerImg.src = imgList[currentImageIndex];
+    }
+    function chImg2(){ 
+      currentImageIndex ++ ;
+      if (currentImageIndex >= imgList.length){
+        currentImageIndex = 0;
+      }
+      bannerImg2.src = imgList2[currentImageIndex];
+    }
+    function chImg3(){ 
+      currentImageIndex ++ ;
+      if (currentImageIndex >= imgList.length){
+        currentImageIndex = 0;
+      }
+      bannerImg3.src = imgList3[currentImageIndex];
+    }
+    function chImg4(){ 
+      currentImageIndex ++ ;
+      if (currentImageIndex >= imgList.length){
+        currentImageIndex = 0;
+      }
+     bannerImg4.src = imgList4[currentImageIndex];
+    }
+    setInterval(chImg, 500);
+    setInterval(chImg2, 1000);
+    setInterval(chImg3, 2000);
+    setInterval(chImg4, 3000);
+
+    function rever_banner(){
+      $("#banner").addClass("flex-row-reverse")
+    }
+
+    function default_banner(){
+      $("#banner").removeClass("flex-row-reverse")
+    }
+
+    setInterval(rever_banner, 1000);
+    setInterval(default_banner, 3000);
+    
+    
+  </script>
+</body>
+</html>

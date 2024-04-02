@@ -1,0 +1,21 @@
+/* 修改模態框背景色 */
+.modal-content {
+    background-color: #fbf9db;
+}
+
+/* 修改標題條的顏色 */
+.modal-header {
+    background-color: #e0a846;
+    color: #fff; /* 修改文字顏色為白色 */
+}
+
+/* 修改按鈕的顏色 */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}

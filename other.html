@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="css/other.css">
+    <style>
+        .demo01{
+            width: 400px;
+            height: 200px;
+            border: 2px solid var(--mycolor04);
+        }
+        .box01{
+            width: 50px;
+            height: 50px;
+            background-color: var(--mycolor01);
+        }
+        .box02{
+            width: 50px;
+            height: 50px;
+            background-color:cornsilk;
+        }
+    </style>
+</head>
+<body>
+    <!-- nav bar -->
+    <section id="s02">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active " 
+                             aria-current="page" href="index.html"> 首頁</a>
+                        </li>        
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="search.html">查詢</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="about.html">介紹</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="other.html">其他</a>
+                        </li>                                         
+                    </ul>
+                    <div>
+                        <span class="text-warning h3" id="user_message"></span>
+                        <button class="btn btn-outline-success "
+                        data-bs-toggle="modal" data-bs-target="#loginModal"
+                        id="loginModal_btn">登入</button>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal" id="regModal_btn">註冊</button>
+                        <button class="btn btn-success d-none"  id="logout_btn" >登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+    
+    <div class="modal fade" id="loginModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h1 class="modal-title fs-5" id="exampleModalLabel">會員登入</h1>
+           <button type="button" class="btn-close" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+         <div class="mb-3">
+             <label for="" class="form-label  " >帳號                
+             </label>            
+             <input type="text" class="form-control" id="login_userID">
+             <!-- 正確錯誤 -->
+             <!-- <div class="valid-feedback">正確</div>
+             <div class="invalid-feedback">錯誤</div> -->
+         </div>
+         <div class="mb-3">
+             <label for="" class="form-label" >密碼                
+             </label>
+             <input type="password" class="form-control" id="login_password">
+         </div>
+                   
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="member_x">取消</button>
+           <button type="button" class="btn btn-primary" id="login_btn">確認</button>
+         </div>
+       </div>
+     </div>
+     </div>
+ 
+   <!-- registerModal -->
+   <div class="modal fade" id="registerModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-xl">
+       <div class="modal-content">
+         <div class="modal-header btn btn-success">
+           <h1 class="modal-title fs-5 " id="exampleModalLabel"
+           style="color: white;">會員註冊</h1>
+           <button type="button" class="btn-close" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+         </div>
+         <div class="modal-body timeline-s02_reg_btn">
+             <div class="row">
+ 
+                 <div class="col-md-6 ">
+                     <h2 class="mb-3 ">會員守則</h2>
+                     <p class="mb-3 ">                                
+                     不要讓店員爆氣，店內禁止員工打客人
+                     </p>
+                     <p class="mb-3">
+                         請勿用個資作為會員資料
+                     </p>
+                     <p class="mb-3">
+                         請用紙筆紀錄
+                     </p>
+                     <p class="mb-3">
+                         大小寫不要打錯
+                     </p>
+                     <p class="mb-3">
+                         不要用特殊字元
+                     </p>
+                     <div class="form-check">
+                         <input class="form-check-input" type="checkbox" value="" id="chk01" name="chk01">
+                         <label class="form-check-label" for="chk01" >
+                             同意
+                         </label>
+                     </div>                           
+                 </div>
+                 <div class="col-6 myForm" >
+                     <!-- 有用check的欄位，feedback是用js寫入的 -->
+                     <div class="mb-3">
+                         <label for="userID" class="form-label">帳號</label>
+                         <input type="text" class="form-control"  placeholder="帳號字數8-20!" id="userID" name="userID">
+                         <div class="valid-feedback"></div>
+                         <div class="invalid-feedback"></div>
+                     </div>
+                     <div class="mb-3">
+                         <label for="username" class="form-label">使用者名稱</label>
+                         <input type="text" class="form-control"  placeholder="使用者名稱1-10" id="username" name="username">
+                         <div class="valid-feedback"></div>
+                         <div class="invalid-feedback"></div>
+                     </div>
+                     <div class="mb-3">
+                         <label for="password" class="form-label">密碼</label>
+                         <input type="password" class="form-control" placeholder="密碼字數8-20!" id="password" name="password">
+                         
+                         <div class="valid-feedback">密碼符合規則</div>
+                         <div class="invalid-feedback">密碼不符合規則</div>
+                     </div>
+                     <div class="mb-3">
+                         <label for="re_password" class="form-label">確認密碼</label>
+                         <input type="password" class="form-control" placeholder="確認密碼!" id="re_password" name="re_password">
+                         
+                         <div class="valid-feedback">密碼一致</div>
+                         <div class="invalid-feedback">密碼不一致</div>
+                     </div>
+                     <div class="mb-3">
+                         <label for="email" class="form-label">Email</label>
+                         <input type="email" class="form-control" placeholder="email字數1~30!" id="email" name="email">
+                         <div class="valid-feedback">Email符合規則</div>
+                         <div class="invalid-feedback">Email不符合規則</div>
+                     </div>
+                 </div>
+             </div>
+          
+         </div>
+         <div class="modal-footer">
+             <!-- 設置id 是為了清空表單 -->            
+             <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" id="cancelModal" >取消</button>
+             <button type="button" class="btn btn-primary" id="reg_btn">註冊</button>
+         </div>
+       </div>
+     </div>
+   </div>
+    <div class="container p-5">
+        <div class="display-4 fw900 mb-3">1.position(基本定位)</div>
+        <div class="demo01 position-relative">
+            <div class="box01 position-absolute translate-middle start-0" id="chBox">1</div>            
+        </div>
+        <div class="display-4 fw900 mb-3">2.border(邊框)</div>
+        <div class="box02 border-5 border-top custom-border" id="chBox2"></div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/member.js"></script>
+    
+    <script>
+           var count=0;
+           
+
+        const boxList = ["start-0", "start-50", "start-100", "top-50", "top-50 start-50", "top-50 start-100", "top-100", "top-100 start-50", "top-100 start-100"] ;              
+
+       
+           
+            function chBox(){
+                $("#chBox").removeClass(boxList[count]);
+                count++;
+                if(count >= boxList.length){count=0;}
+                $("#chBox").addClass(boxList[count]);
+                
+                
+            };
+      
+        setInterval(chBox, 1000);
+
+        var count_border=0;
+    const boxList_border = ["border-top","border-end rounded-circle","border-bottom","border-start rounded-pill"];
+    function chBox_border(){
+                $("#chBox2").removeClass(boxList_border[count_border]);
+                count_border++;
+                if(count_border >= boxList_border.length){count_border=0;}
+                $("#chBox2").addClass(boxList_border[count_border]);
+                
+                
+            };
+            setInterval(chBox_border, 1000);
+    </script>
+    <script>
+        
+    </script>
+</body>
+</html>

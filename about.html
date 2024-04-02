@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作介紹</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+      .banner{
+        height: 320px;
+        background-image: url(img/cls.JPG);
+      }
+
+      .img01{
+        height: 280px;
+        background-image: url(img/beef/beef1.jpg);
+      }
+
+      .img02{
+        height: 280px;
+        background-image: url(img/beef/beef2.jpg);
+      }
+
+      .img03{
+        height: 280px;
+        background-image: url(img/beef/beef3.jpg);
+      }
+
+      .img04{
+        height: 280px;
+        background-image: url(img/beef/beef4.jpg);
+      }
+
+      .timeline-section{
+        position:relative;
+      }
+      .timeline-section::before{
+        position: absolute;
+        content:"";
+        top:0;
+        bottom: 0;
+        width: 5px;
+        /* background-color:#ccc; */
+        background-image: linear-gradient( 45deg,rgba(0,0,0,0.05),rgba(0,0,0,0.7)),url(img/pig4.jpg);
+        left:50%;
+        transform: translateX(-50%);
+      }
+      .timeline-section-pointer{
+        position: relative;
+      }
+      .timeline-section-pointer::before{
+        position: absolute;
+        content: "";
+        width: 25px;
+        height: 25px;
+        background-color: #FFF;
+        top: 0;
+        border-radius: 50%;
+        border: 8px solid #b81111;
+      }
+      .timeline-section-pointer:hover::before{
+        width: 28px;
+        height: 28px;
+        background-color: #fff;
+        border: 8px solid #8f057c;
+      }
+      @media screen and (max-width:768px){
+        .timeline-section::before,.timeline-section-pointer::before
+            {
+                display: none;
+            }   
+      }
+    </style>
+</head>
+<body>
+<!-- nav bar -->
+<section id="s02">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">                
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active " 
+                         aria-current="page" href="index.html"> 首頁</a>
+                    </li>        
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="search.html">查詢</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="about.html">介紹</a>
+                    </li>                                        
+                </ul>
+                <div>
+                    <span class="text-warning h3" id="user_message"></span>
+                    <button class="btn btn-outline-success "
+                    data-bs-toggle="modal" data-bs-target="#loginModal"
+                    id="loginModal_btn">登入</button>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal" id="regModal_btn">註冊</button>
+                    <button class="btn btn-success d-none"  id="logout_btn" >登出</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<!-- login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">會員登入</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="mb-3">
+            <label for="" class="form-label  " >帳號                
+            </label>            
+            <input type="text" class="form-control" id="login_userID">
+            <!-- 正確錯誤 -->
+            <!-- <div class="valid-feedback">正確</div>
+            <div class="invalid-feedback">錯誤</div> -->
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" >密碼                
+            </label>
+            <input type="password" class="form-control" id="login_password">
+        </div>
+                
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="member_x">取消</button>
+        <button type="button" class="btn btn-primary" id="login_btn">確認</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- registerModal -->
+<div class="modal fade" id="registerModal" tabindex="-1"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header btn btn-success">
+            <h1 class="modal-title fs-5 " id="exampleModalLabel"
+            style="color: white;">會員註冊</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+            </div>
+            <div class="modal-body timeline-s02_reg_btn">
+                <div class="row">
+
+                    <div class="col-md-6 ">
+                        <h2 class="mb-3 ">會員守則</h2>
+                        <p class="mb-3 ">                                
+                        不要讓店員爆氣，店內禁止員工打客人
+                        </p>
+                        <p class="mb-3">
+                            請勿用個資作為會員資料
+                        </p>
+                        <p class="mb-3">
+                            請用紙筆紀錄
+                        </p>
+                        <p class="mb-3">
+                            大小寫不要打錯
+                        </p>
+                        <p class="mb-3">
+                            不要用特殊字元
+                        </p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="chk01" name="chk01">
+                            <label class="form-check-label" for="chk01" >
+                                同意
+                            </label>
+                        </div>                           
+                    </div>
+                    <div class="col-6 myForm" >
+                        <!-- 有用check的欄位，feedback是用js寫入的 -->
+                        <div class="mb-3">
+                            <label for="userID" class="form-label">帳號</label>
+                            <input type="text" class="form-control"  placeholder="帳號字數8-20!" id="userID" name="userID">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">使用者名稱</label>
+                            <input type="text" class="form-control"  placeholder="使用者名稱1-10" id="username" name="username">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">密碼</label>
+                            <input type="password" class="form-control" placeholder="密碼字數8-20!" id="password" name="password">
+                            
+                            <div class="valid-feedback">密碼符合規則</div>
+                            <div class="invalid-feedback">密碼不符合規則</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="re_password" class="form-label">確認密碼</label>
+                            <input type="password" class="form-control" placeholder="確認密碼!" id="re_password" name="re_password">
+                            
+                            <div class="valid-feedback">密碼一致</div>
+                            <div class="invalid-feedback">密碼不一致</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="email字數1~30!" id="email" name="email">
+                            <div class="valid-feedback">Email符合規則</div>
+                            <div class="invalid-feedback">Email不符合規則</div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+                <!-- 設置id 是為了清空表單 -->            
+                <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" id="cancelModal" >取消</button>
+                <button type="button" class="btn btn-primary" id="reg_btn">註冊</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="banner bg-info bg-cover"></div>
+    <div class="container"><!-- 共用-->
+        <div class="timeline-section"><!-- 共用-->
+            <!-- 第一個 -->
+            <div class="row mt-3 justify-content-center
+                align-items-center  timeline-section-pointer">
+                <div class="col-md-5 text-center">
+                <div class="text01">
+                    <h3 class="fw900 text-danger">關於本站<small class="text-muted">About Us</small></h3>
+                    <p>近年來物價上漲、食安一直爆</p>
+                    <ul class="list-unstyled">
+                        <li>健康意識提升</li>
+                        <li>自己動手做菜</li>
+                        <li>自己挑肉</li>
+                        <li>吃肉吃魚吃海鮮，人就是要吃吃吃</li>
+                    </ul>
+                </div>                
+                </div>
+                <div class="col-md-5">
+                    <div class="img01 bg-cover"></div>
+                </div>
+            </div>                
+        
+
+            <!-- 第二個 -->
+            <div class="row mt-3 justify-content-center
+                align-items-center flex-row-reverse timeline-section-pointer">
+                <div class="col-md-5 text-center">
+                    <div class="text01">
+                        <h3 class="fw900 text-danger">站內資訊<small class="text-muted">About Us</small></h3>
+                        <p>"搜索"附近的便宜商家</p>
+                        <ul class="list-unstyled">
+                            <li>按照分類找尋</li>
+                            <li>各個分類陸續新增內容中</li>
+                            <li>商品以原型食品為主</li>
+                            <li>服務品質:免費的不要抱怨</li>
+                        </ul>                
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="img02 bg-cover"></div>
+                </div>
+            </div>
+            <!-- 第三個 -->
+            <div class="row mt-3 justify-content-center
+                align-items-center  timeline-section-pointer">
+                <div class="col-md-5 text-center">
+                <div class="text01">
+                    <h3 class="fw900 text-danger">操作方式<small class="text-muted">step</small></h3>
+                    <p>點擊最上方"搜尋"</p>
+                    <ul class="list-unstyled">
+                        <li>#地區</li>
+                        <li>#商品分類</li>
+                        <li>#選擇所需</li>
+                        <li>#查看大家的貼文</li>
+                    </ul>
+                </div>                
+                </div>
+                <div class="col-md-5">
+                    <div class="img03 bg-cover "></div>
+                </div>
+            </div>                
+        
+
+            <!-- 第四個 -->
+            <div class="row mt-3 mb-5  justify-content-center align-items-center flex-row-reverse timeline-section-pointer">
+                <div class="col-md-5 text-center">
+                    <div class="text01">
+                        <h3 class="fw900 text-danger">你知道...<small class="text-muted"></small></h3>
+                        <p>有多久沒了解周遭的改變</p>
+                        <ul class="list-unstyled">
+                            <li>也許你常逛的店</li>
+                            <li>他的貨源也在附近幾里</li>
+                            <li>例如:蛋商、五金商</li>
+                            <li>只是不顯眼</li>
+                        </ul>                
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="img04 bg-cover"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+           
+    </div><!-- align-items-center置中很好用中-->
+    <div class="footer  bg-dark text-white text-center fw900 py-3 fixed-bottom">
+        @專題 2024製作
+    </div>
+
+
+        
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/member.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

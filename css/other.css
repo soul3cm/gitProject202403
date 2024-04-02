@@ -1,0 +1,10 @@
+/* .custom-border {
+    border-color: red !important; 
+  } */
+  /* 使用 !important 來確保優先級 */
+  .custom-border {
+    border-top-color: red !important;
+    border-right-color: blue !important;
+    border-bottom-color: green !important;
+    border-left-color: rgb(231, 15, 145) !important;
+}

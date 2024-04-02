@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/manager.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+<body>
+    
+<div class="row ">
+    <p class="col-10"></p>
+    <p class="col-1 align-content-end" id="user_message">xxx</p>
+    <button type="button" class="col-1 btn btn-success " id="logout_btn">登出</button>
+    
+</div>
+<div id="mySidenav" class="sidenav" >
+        <!-- 防止跳轉 -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#" class="myButton" onclick="openManager('homeM')"  id="home">首頁</a>
+  <a href="#" class="myButton" onclick="openManager('memberM')"  id="memberOpen">會員管理</a>
+  <a href="#" class="myButton" onclick="openManager('productM')" id="productOpen">產品管理</a>
+  <a href="#" class="myButton" onclick="openManager('postM')"    id="postOpen"   >貼文管理</a>
+  <a href="#" class="myButton" onclick="openManager('reactionM')" id="reactionOpen" >回饋管理</a>
+  <a href="#" class="myButton" onclick="openManager('newsM')"    id="newsOpen"  >最新消息管理</a>
+</div>
+
+<!-- 開啟的按鈕-->
+<h1><span onclick="openNav()">&equiv;</span></h1>
+
+<div id="main" onclick="closeNav()">
+    <!-- 首頁-->
+    <div class="tabContent tabHome" id="homeM">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <canvas id="myChart01"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1" id="member_all">
+                    0
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 會員管理系統  class="tabContent" 是選項卡取來用的class名稱-->
+    <div  class="tabContent" id="memberM">
+        <div class="container pt-5">
+            <button type="button" id="all_logout">一鍵全部踢下線</button>
+            <button type="button" id="member_f5">重設人數</button>
+            <button type="button" id="member_count">活動人口</button>
+            <span id="member_online">?</span>           
+            <table class="table table-bordered table-hover table-sm border-success table-rwd">
+                <caption class="text-end">使用者列表</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>使用者ID</th>
+                        <th>使用者帳號</th>
+                        <th>使用者名稱</th>
+                        <th>信箱</th>
+                        <th>狀態</th>
+                        <th>註冊時間</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody id="member_data">
+                    <tr>
+                        <td>1</td>
+                        <td>c8763</td>
+                        <td>快還要更快</td>
+                        <td>email@123456</td>
+                        <td>1</td>
+                        <td>20240302</td>
+                        <td>
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#UmemberModal" >更新</button>                                                  
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center" id="pageList_member">
+                    <li class="page-item"><a class="page-link" href="#" onclick="drawTable(0)">1</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+        <!-- 會員更新的modal -->
+        <div class="modal fade" id="UmemberModal" tabindex="-1" 
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-success">
+                        <h1 class="modal-title fs-3 fw-900" id="">使用者更新</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="updateModal_userID" class="form-label">帳號</label>
+                            <input type="text" class="form-control" disabled id="updateModal_userID" name="updateModal_userID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateModal_userName" class="form-label">名稱</label>
+                            <input type="text" class="form-control" id="updateModal_userName" name="updateModal_userName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateModal_email" class="form-label">信箱</label>
+                            <input type="text" class="form-control" id="updateModal_email" name="updateModal_email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateModal_state" class="form-label">狀態</label>
+                            <input type="text" class="form-control" id="updateModal_state" name="updateModal_state">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="member_Modal_updata_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- 產品管理系統 -->
+    <div  class="tabContent"  id="productM">
+        <div class="container pt-5">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#CproductModal">新增產品</button>            
+            <table class="table table-bordered table-hover table-sm border-success table-rwd">
+                <caption class="text-end">產品列表</caption>                
+                <thead class="table-dark">                    
+                    <tr>
+                        <th>產品ID</th>
+                        <th>產品分類</th>
+                        <th>產品名稱</th>
+                        <th>產品簡介</th>
+                        <th>新增時間</th>
+                    </tr>
+                </thead>
+                <tbody id="product_data">
+                    <tr>
+                        <td>1</td>
+                        <td>豬</td>
+                        <td>豬腳</td>
+                        <td>豬腳，沒有分前後</td>                    
+                        <td>20240302</td>
+                        <td>
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#UproductModal">產品更新</button>
+                            <button class="btn btn-danger">產品刪除</button>                      
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center" id="pageList_product">
+                    <li class="page-item"><a class="page-link" href="#" >1</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+        <!-- 產品新增的modal -->
+        <div class="modal fade" id="CproductModal" tabindex="-1" 
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-success">
+                        <h1 class="modal-title fs-3 fw-900" >產品新增</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">分類</label>
+                            <input type="text" class="form-control"  id="CproductModal_division" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">名稱</label>
+                            <input type="text" class="form-control" id="CproductModal_Pname" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">簡介</label>
+                            <input type="text" class="form-control" id="CproductModal_content" name="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="CproductModal_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 產品更新的modal -->
+        <div class="modal fade" id="UproductModal" tabindex="-1" 
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-success">
+                        <h1 class="modal-title fs-3 fw-900" id="">產品更新</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">分類</label>
+                            <input type="text" class="form-control"  id="updateModal_division" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">名稱</label>
+                            <input type="text" class="form-control" id="updateModal_Pname" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">簡介</label>
+                            <input type="text" class="form-control" id="updateModal_content" name="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="product_Modal_updata_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- 貼文管理系統 -->
+    <div  class="tabContent "  id="postM">
+        <div class="container pt-5">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#CpostModal">新增貼文</button> 
+            <table class="table table-bordered table-hover table-sm border-success table-rwd">
+                <caption class="text-end">貼文列表</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>貼文ID</th>
+                        <th>貼文發布者名稱</th>
+                        <th>X市X區</th>
+                        <th>分類</th>
+                        <th>名稱</th>
+                        <th>單位</th>
+                        <th>價格</th>
+                        <th>特價</th>
+                        <th>地點(map)</th>
+                        <th>備註</th>
+                        <th>發布日期</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody id="post_data">
+                    <tr>
+                        <td>1</td>
+                        <td>豬不好吃</td>
+                        <td>A市B區</td>
+                        <td>豬肉</td>
+                        <td>胛心肉</td>
+                        <td>每斤</td>
+                        <td>110</td>
+                        <td>1</td>
+                        <td>招牌名稱:殺豬刀</td>
+                        <td>傳統市場豬肉攤</td>                    
+                        <td>20240302</td>
+                        <td>
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#UpostModal">更新</button>
+                            <button class="btn btn-danger">刪除</button>                      
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center" id="pageList_post">
+                    <li class="page-item"><a class="page-link" href="#" >1</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+        <!-- 貼文新增的modal -->
+        <div class="modal fade" id="CpostModal" tabindex="-1" 
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-success">
+                        <h1 class="modal-title fs-3 fw-900" >貼文新增</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">發布者</label>
+                            <input type="text" class="form-control"  id="CpostModal_userName" name="" value="管理員">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">地區</label>
+                            <input type="text" class="form-control" id="CpostModal_Addr" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">分類</label>
+                            <input type="text" class="form-control" id="CpostModal_division" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">名稱</label>
+                            <input type="text" class="form-control" id="CpostModal_Pname" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">單位</label>
+                            <input type="text" class="form-control" id="CpostModal_unit" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">價格</label>
+                            <input type="text" class="form-control" id="CpostModal_price" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">特價</label>
+                            <input type="text" class="form-control" id="CpostModal_special" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">地點</label>
+                            <input type="text" class="form-control" id="CpostModal_googleMap" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">備註</label>
+                            <input type="text" class="form-control" id="CpostModal_note" name="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="CpostModal_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 貼文更新的modal -->
+        <div class="modal fade" id="UpostModal" tabindex="-1" 
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-success">
+                        <h1 class="modal-title fs-3 fw-900" id="">貼文更新</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">                        
+                        <div class="mb-3">
+                            <label for="" class="form-label">發布者</label>
+                            <input type="text" class="form-control"  id="UpostModal_userName" name="" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">地區</label>
+                            <input type="text" class="form-control" id="UpostModal_Addr" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">分類</label>
+                            <input type="text" class="form-control" id="UpostModal_division" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">名稱</label>
+                            <input type="text" class="form-control" id="UpostModal_Pname" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">單位</label>
+                            <input type="text" class="form-control" id="UpostModal_unit" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">價格</label>
+                            <input type="text" class="form-control" id="UpostModal_price" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">特價</label>
+                            <input type="text" class="form-control" id="UpostModal_special" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">地點</label>
+                            <input type="text" class="form-control" id="UpostModal_googleMap" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">備註</label>
+                            <input type="text" class="form-control" id="UpostModal_note" name="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="post_Modal_updata_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- 回饋管理系統 、只刪除不更新-->
+    <div  class="tabContent" id="reactionM">
+        <div class="container pt-5">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#CreactionModal">新增回饋</button>  
+            <table class="table table-bordered table-hover table-sm border-success table-rwd">
+                <caption class="text-end">回饋列表</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>回饋按鈕ID</th>
+                        <th>貼文ID</th>
+                        <th>使用者名稱</th>
+                        <th>OX</th>                    
+                        <th>日期</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody id="reaction_data">
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>12345678</td>
+                        <td>0</td>                                       
+                        <td>20240302</td>
+                        <td>                        
+                            <button class="btn btn-danger">刪除</button>                      
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center" id="pageList_reaction">
+                    <li class="page-item"><a class="page-link" href="#" >1</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- 新增回饋的modal -->
+    <div class="modal fade" id="CreactionModal" tabindex="-1" 
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-success">
+                        <h1 class="modal-title fs-3 fw-900" >新增回饋</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">貼文ID</label>
+                            <input type="text" class="form-control"  id="CreactionModal_postID" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">使用者名稱</label>
+                            <input type="text" class="form-control"  id="CreactionModal_userName" name="" value="管理員">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">OX</label>
+                            <input type="text" class="form-control"  id="CreactionModal_reaOX" name="">
+                        </div>                            
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="CreactionModal_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- 公告管理系統，只刪除不更新 -->
+    
+    <div  class="tabContent "  id="newsM">
+            <div class="container pt-5">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#CnewsModal">發布消息</button>  
+                <table class="table table-bordered table-hover table-sm border-success table-rwd">
+                    <caption class="text-end">貼文列表</caption>
+                    <thead class="table-dark">
+                        <tr>
+                            <th>公告ID</th>                            
+                            <th>內容</th>                            
+                            <th>發布日期</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody id="news_data">
+                        <tr>
+                            <td>1</td>
+                            <td>大肥羊咬狼已被停權</td>                                              
+                            <td>20240312</td>
+                            <td>                                
+                                <button class="btn btn-danger">刪除</button>                      
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="container">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center" id="pageList_news">
+                        <li class="page-item"><a class="page-link" href="#" >1</a></li>
+                    </ul>
+                </nav>
+            </div>
+    </div>
+    <!-- 發布消息的modal -->
+    <div class="modal fade" id="CnewsModal" tabindex="-1" 
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-success">
+                        <h1 class="modal-title fs-3 fw-900" >發布消息</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">內容</label>
+                            <input type="text" class="form-control"  id="CnewsModal_content" name="">
+                        </div>                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="CnewsModal_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+</div>   
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/manager.js"></script>
+<script src="js/sweetalert2@11.js"></script>
+<script src="js/manager_product.js"></script>
+<script src="js/manager_news.js"></script>
+<script src="js/manager_post.js"></script>
+<script src="js/manager_reaction.js"></script>
+<script src="js/manager_chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

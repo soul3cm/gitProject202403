@@ -1,0 +1,81 @@
+/* 選縣市的側邊面板 */
+/* The sidepanel menu */
+.sidepanel {
+  height: 100%; /* Specify a height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ background-blend-mode: multiply,multiply; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+/* The sidepanel links */
+.sidepanel table {
+  padding: 8px 4px 8px 40px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s; 
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel table:hover {
+  color: #821b1b; 
+}
+
+.sidepanel table tr td:hover {
+  background-color: #f9d46c;
+  color: #821b1b;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-image: linear-gradient(-60deg, #e6ddbb 0%, #91ae46 80%);
+  color:  #821b1b;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 50%;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* 移除表格的邊框 */
+.borderless-table {
+    border-collapse: collapse;
+  }
+  
+  /* 移除表格中的內部和外部邊框 */
+  .borderless-table, .borderless-table td, .borderless-table th {
+    border: none;
+  }
+  
+  /* 添加其他樣式 */
+  .borderless-table td {
+    padding: 8px;
+    text-align: center;
+    background-color: #f2f2f2;
+  }
+  
+  .borderless-table tr:nth-child(even) {
+    background-color: #e6e6e6;
+  }
+  

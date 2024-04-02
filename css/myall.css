@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+TC:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --mycolor01: rgb(68, 172, 195);
+    --mycolor02: #d3b7d8;
+    --mycolor03: #a13e97 ;
+    --mycolor04: #280e3b ;
+    --mycolor05: #ffb400 ;
+    --mycolor06: #ff6c02 ;
+    --mycolor07: #fff9e9 ;
+    --mycolor08: #edefee ;
+    --mycolor09: hsla(61, 100%, 73%, 0.5);
+    --mycolor10: hsla(194, 100%, 85%, 0.4);
+    --mycolor11: hsla(338, 100%, 86%, 0.4);
+    --mycolor12: hsla(338, 65%, 40%, 0.3);
+    --mycolor13: hsla(34, 6%, 22%, 0.15);
+    --mycolor14: hsla(155, 40%, 52%, 0.5);
+    --mycolor15: rgba(25, 35, 25, 0.1);
+    --mycolor16: rgba(103, 229, 103, 0.1);
+    --mycolor17: rgba(235, 152, 222, 0.25);
+    --mycolor18:rgba(140, 29, 155, 0.214);
+    --mycolor19: rgba(219, 223, 35, 0.1);
+    --mycolor20: rgba(136, 72, 59, 0.3);
+}
+body{font-family: 'DotGothic16', sans-serif;    
+}
+
+.fw900{ font-weight: 900;}
+.fw800{ font-weight: 800;}
+.fw700{ font-weight: 700;}
+.fw600{ font-weight: 600;}
+.fw500{ font-weight: 500;}
+.fw400{ font-weight: 400;}
+.fw300{ font-weight: 300;}
+.fw200{ font-weight: 200;}
+.fw100{ font-weight: 100;}
+
+.bg-cover{
+    background-size: cover;
+}
+/*消失與出現*/
+
+
+
+/*表格*/
+.demo{
+    width: 50%;
+    padding: 25px;
+    margin: 25px;
+    border: 2px dotted var(--mycolor01);
+}

@@ -1,0 +1,16 @@
+.notice-box {
+    background-color: #ffffcc; /* 背景顏色 */
+    border: 1px solid #cccccc; /* 邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 20px; /* 內邊距 */
+    margin: 20px auto; /* 外邊距，使其居中 */
+    max-width: 600px; /* 最大寬度 */
+  }
+  
+  .notice-box h2 {
+    color: #333333; /* 標題文字顏色 */
+  }
+  
+  .notice-box ul li {
+    color: #666666; /* 內容文字顏色 */
+  }

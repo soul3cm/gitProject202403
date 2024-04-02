@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/search-sidepanel.css">
+    <link rel="stylesheet" href="css/search-modal.css">
+    
+</head>
+<body>    
+<!-- nav bar -->
+<section id="s02">
+    <nav class="navbar navbar-expand-md    navbar-dark">
+        <div class="container">                
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active " 
+                         aria-current="page" href="index.html"> 首頁</a>
+                    </li>        
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="search.html">查詢</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="about.html">介紹</a>
+                    </li>                                        
+                </ul>
+                <div>
+                    <span class="text-warning h3" id="user_message"></span>
+                    <button class="btn btn-outline-success "
+                    data-bs-toggle="modal" data-bs-target="#loginModal"
+                    id="loginModal_btn">登入</button>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal" id="regModal_btn">註冊</button>
+                    <button class="btn btn-success d-none"  id="logout_btn" >登出</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<!-- login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">會員登入</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="mb-3">
+            <label for="" class="form-label  " >帳號                
+            </label>            
+            <input type="text" class="form-control" id="login_userID">
+            <!-- 正確錯誤 -->
+            <!-- <div class="valid-feedback">正確</div>
+            <div class="invalid-feedback">錯誤</div> -->
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" >密碼                
+            </label>
+            <input type="password" class="form-control" id="login_password">
+        </div>
+                
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="member_x">取消</button>
+        <button type="button" class="btn btn-primary" id="login_btn">確認</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- registerModal -->
+<div class="modal fade" id="registerModal" tabindex="-1"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header btn btn-success">
+        <h1 class="modal-title fs-5 " id="exampleModalLabel"
+        style="color: white;">會員註冊</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+        </div>
+        <div class="modal-body timeline-s02_reg_btn">
+            <div class="row">
+
+                <div class="col-md-6 ">
+                    <h2 class="mb-3 ">會員守則</h2>
+                    <p class="mb-3 ">                                
+                    請勿用不雅字詞、管理者意味的名稱
+                    </p>
+                    <p class="mb-3">
+                        請勿用個資作為會員資料
+                    </p>
+                    <p class="mb-3">
+                        請用紙筆紀錄
+                    </p>
+                    <p class="mb-3">
+                        大小寫不要打錯
+                    </p>
+                    <p class="mb-3">
+                        不要用特殊字元
+                    </p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="chk01" name="chk01">
+                        <label class="form-check-label" for="chk01" >
+                            同意
+                        </label>
+                    </div>                           
+                </div>
+                <div class="col-6 myForm" >
+                    <!-- 有用check的欄位，feedback是用js寫入的 -->
+                    <div class="mb-3">
+                        <label for="userID" class="form-label">帳號</label>
+                        <input type="text" class="form-control"  placeholder="帳號字數8-20!" id="userID" name="userID">
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">使用者名稱</label>
+                        <input type="text" class="form-control"  placeholder="使用者名稱1-10" id="username" name="username">
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">密碼</label>
+                        <input type="password" class="form-control" placeholder="密碼字數8-20!" id="password" name="password">
+                        
+                        <div class="valid-feedback">密碼符合規則</div>
+                        <div class="invalid-feedback">密碼不符合規則</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="re_password" class="form-label">確認密碼</label>
+                        <input type="password" class="form-control" placeholder="確認密碼!" id="re_password" name="re_password">
+                        
+                        <div class="valid-feedback">密碼一致</div>
+                        <div class="invalid-feedback">密碼不一致</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="email字數1~30!" id="email" name="email">
+                        <div class="valid-feedback">Email符合規則</div>
+                        <div class="invalid-feedback">Email不符合規則</div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <div class="modal-footer">
+            <!-- 設置id 是為了清空表單 -->            
+            <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" id="cancelModal" >取消</button>
+            <button type="button" class="btn btn-primary" id="reg_btn">註冊</button>
+        </div>
+    </div>
+    </div>
+</div>    
+
+<!-- 產品&貼文載入區 -->
+<div class="row grid-container">
+    <div class="col-2 overflow-hidden">
+        <div id="myList_map">
+              <div id="mySidepanel" class="sidepanel">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <span class="d-flex">
+                       <table class="borderless-table" id="cityName">
+                        <tr> <td>臺中市</td> </tr>
+                        <tr> <td>臺中市</td> </tr>
+                        
+                      </table>
+                      <table class="borderless-table" id="areaName">
+                        <tr>
+                          <td>未選</td>                          
+                        </tr>                       
+                       
+                      </table>
+                </span>
+              </div>        
+              <button class="openbtn" onclick="openNav()">&#9776; 選擇縣市/鄉鎮區</button>
+        </div>        
+        <div id="myList" class="OF_Y" style="height: 850px">
+            <button class="accordion ">豬肉</button>
+            <div class="panel">
+            <p>豬頭</p>
+            </div>           
+        </div>
+    </div>
+
+    <div class="col-9 mt-3">
+        <div class="product-box" id="product_content"><p>產品簡介:</p></div>
+        <div><button type="button" data-bs-toggle="modal" data-bs-target="#postModal"
+            >發文</button></div>
+        <div class="row" id="postCard">
+            <div class="col-4 col-lg-3" >
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                       <div class="flip-card-front">
+                         <h1>價格:這是範例</h1>
+                         <p>單位:請點擊左側</p>
+                         <p>特價:選取產品</p>
+                         <p>貼文者:範例</p>
+                         <p>O:<strong>99 </strong>X:<strong>9</strong></p>
+                         
+                       </div>
+                       <div class="flip-card-back">
+                            <h1>備註:</h1>
+                            <p>招牌名稱:老王豬肉攤</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=" target="_blank">地圖:99號橋旁傳統市場</a>
+                            <P >VOTE 
+                                <button type="button" class="btn btn-success" id="vote__btn_O">O</button> 
+                                <button type="button" class="btn btn-danger" id="vote_btn_X">X</button>
+                            </P>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<!-- 發文的modal -->
+<div class="modal fade " id="postModal" tabindex="-1"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" >發表貼文(如果前三欄位有空白請先選取左邊欄位)</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="mb-3">           
+            <input type="text" class="form-control" id="postModal_userName" disabled style="display: none;">            
+        </div>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">地區</span>
+            <input type="text" class="form-control" id="postModal_Addr" disabled>
+        </div>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">分類</span>
+            <input type="text" class="form-control" id="postModal_division" disabled>
+        </div>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">名稱</span>
+            <input type="text" class="form-control"  id="postModal_Pname" disabled>
+        </div>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">單位</span>
+            <input type="text" class="form-control"  id="postModal_unit" placeholder="例如:斤、100g、公斤、每盒幾個">
+        </div>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">價格</span>
+            <input type="text" class="form-control"  id="postModal_price" max="9999">
+        </div>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">特價</span>
+            <input type="text"   id="postModal_special" value="0" readonly>
+            <button type="button" class="btn btn-dark" onclick="special_input(1)">有</button>
+            <button type="button" onclick="special_input(0)">無</button>
+        </div>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">地點</span>
+            <input type="text"  id="locationInput" placeholder="請輸入該店家的地名" value="未輸入" max="20">
+            <a href="https://www.google.com/maps/search/?api=1&query=" target="_blank"  id="mapLink">查看</a>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" >備註                
+            </label>
+            <input type="text" class="form-control" id="postModal_note" value="無">
+        </div>
+                
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >取消</button>
+        <button type="button" class="btn btn-primary" id="postModal_check_btn" data-bs-dismiss="modal">確認</button>
+        </div>
+    </div>
+    </div>
+</div>
+<span id="snackbar">Some text some message..</span>
+
+
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/member_search.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/search.js"></script>
+<script src="js/search_map.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/search_post.js"></script>
+<script>
+    /* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "300px";
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+
+    
+</script>
+</body>
+</html>
