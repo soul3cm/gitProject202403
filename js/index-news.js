@@ -1,12 +1,12 @@
 $(function(){
     $.ajax({
         type: "GET",
-        url: "api/news/news-Read-api.php",
+        url: "https://3cmproject.000webhostapp.com/project1/news/news-Read-api.php",
         async: false,
         dataType: "json",
         success: showdata_news,
         error: function () {
-            alert("error-api/news/news-Read-api.php");
+            alert("error-https://3cmproject.000webhostapp.com/project1/news/news-Read-api.php");
         }
     });
 
