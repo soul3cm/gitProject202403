@@ -108,18 +108,18 @@ function openNav() {
             // 讀取會員資料
             $.ajax({
                 type: "GET",
-                url: "api/member/member-Read-api.php",
+                url: "https://3cmproject.000webhostapp.com/project1/member/member-Read-api.php",
                 async: false,
                 dataType: "json",
                 success: showdata,
                 error: function () {
-                    alert("error-api/member/member-Read-api.php");
+                    alert("error-member-Read-api.php");
                 }
             });
 
             //$(" #update_member_btn").click(function(){}) 更新
             $("body").on("click" ," #member_data #update_member_btn", function () {                
-                console.log($(this).data("userid") +','+ $(this).data("username") +','+ $(this).data("email")+','+ $(this).data("state"));
+                // console.log($(this).data("userid") +','+ $(this).data("username") +','+ $(this).data("email")+','+ $(this).data("state"));
                 u_id = $(this).data("id");
                 $("#updateModal_userID").val($(this).data("userid"));
                 $("#updateModal_userName").val($(this).data("username"));
@@ -129,24 +129,24 @@ function openNav() {
 
              //#member_Modal_updata_btn 監聽
              $("#member_Modal_updata_btn").click(function () {
-                //傳遞更新資料至後端api {"UserID":"XX", "UserName":"XX", "Email":"XX", "State":"XX"}
+               
                 var dataJSON = {};
                 dataJSON["ID"] = u_id;
                 dataJSON["UserName"] = $("#updateModal_userName").val();
                 dataJSON["Email"] = $("#updateModal_email").val();
                 dataJSON["State"] = $("#updateModal_state").val();
-                console.log(JSON.stringify(dataJSON));
+                // console.log(JSON.stringify(dataJSON));
 
                 $.ajax({
                     type: "POST",
-                    url: "api/member/member-Update-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/member/member-Update-api.php",
                     async: false,
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success:  showdata_updata,
                             
                     error: function () {
-                        alert("error-api/member/member-Update-api.php");
+                        alert("error-member-Update-api.php");
                     }
                 });
             });
@@ -206,7 +206,7 @@ function openNav() {
                 $("#pageList_member").append(strHTML);
             });
 
-            console.log(newData);
+            // console.log(newData);
         }
 
         function drawTable(page) {
@@ -228,7 +228,7 @@ function openNav() {
         }
 
         function showdata_updata(data) {
-            console.log(data); 
+            // console.log(data); 
             if (data.state) {
                 location.reload();
                     //驗證成功
@@ -240,7 +240,7 @@ function openNav() {
         }
 
         function showdata_Down_member(data) {
-            console.log(data);
+            // console.log(data);
             if (data.state) {                
                     //驗證成功
                    alert("更新成功");    
@@ -248,7 +248,7 @@ function openNav() {
         }
 
         function showdata_Count_member(data) {
-            console.log(data);
+            // console.log(data);
             if (data.state) {                
                     //驗證成功                
                   $("#member_online").text(data.data[0]['count(online)'])  ;
