@@ -41,12 +41,12 @@ function openNav() {
                 console.log(JSON.stringify(dataJSON));
                 $.ajax({
                     type: "POST",
-                    url: "api/manager/manager-Check_UID-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/manager/manager-Check_UID-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success: showdata_Check_UID,
                     error: function () {
-                        alert("error-api/manager/manager-Check_UID-api.php");
+                        alert("error-https://3cmproject.000webhostapp.com/project1/manager/manager-Check_UID-api.php");
                     }
                 });
             }else{
