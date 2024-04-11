@@ -15,7 +15,7 @@
                 // console.log(JSON.stringify(dataJSON));
                 $.ajax({
                     type: "POST",
-                    url: "https://3cmproject.000webhostapp.com/project1/member/member-Check_UID-api.phpp",
+                    url: "https://3cmproject.000webhostapp.com/project1/member/member-Check_UID-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success:showdata_Check_UID,
