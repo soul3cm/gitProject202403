@@ -10,12 +10,12 @@
                 console.log(JSON.stringify(dataJSON));
                 $.ajax({
                     type: "POST",
-                    url: "api/news/news-Create-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/news/news-Create-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success:Cnews_showdata,
                     error:function(){
-                        alert("error-api/news/news-Create-api.php")
+                        alert("error-news-Create-api.php")
                     }
                 });
         });
@@ -23,12 +23,12 @@
         // 讀取消息
         $.ajax({
                         type: "GET",
-                        url: "api/news/news-Read-api.php",
+                        url: "https://3cmproject.000webhostapp.com/project1/news/news-Read-api.php",
                         async: false,
                         dataType: "json",
                         success: news_showdata,
                         error: function () {
-                            alert("error-api/news/news-Read-api.php");
+                            alert("error-news-Read-api.php");
                         }
                     });
 
@@ -43,13 +43,13 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "api/news/news-Delete-api.php",
+                        url: "https://3cmproject.000webhostapp.com/project1/news/news-Delete-api.php",
                         async: false,
                         data: JSON.stringify(dataJSON),
                         dataType: "json",
                         success: Dnews_showdata,
                         error: function () {
-                            alert("error-api/news/news-Delete-api.php");
+                            alert("error-news-Delete-api.php");
                         }
                     });
                 }
