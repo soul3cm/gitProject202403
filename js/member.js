@@ -182,7 +182,7 @@
                 //傳遞至後端執行登入行為
                 $.ajax({
                     type:"POST",
-                    url: "ahttps://3cmproject.000webhostapp.com/project1/member/member-login_api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/member/member-login_api.php",
                     data: JSON.stringify(dataJSON),
                     dataType:"json",
                     success: showdata_login,
@@ -241,7 +241,7 @@
         }
 
         function showdata_check_Name_uni(data) {
-            console.log(data);
+            // console.log(data);
             if (data.state) {
                 //名稱不存在, 可以使用!
                 $("#username").removeClass('is-invalid');
