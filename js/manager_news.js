@@ -7,7 +7,7 @@
             var dataJSON = {};
                 
                 dataJSON["Content"]=$("#CnewsModal_content").val();
-                console.log(JSON.stringify(dataJSON));
+                // console.log(JSON.stringify(dataJSON));
                 $.ajax({
                     type: "POST",
                     url: "https://3cmproject.000webhostapp.com/project1/news/news-Create-api.php",
@@ -36,10 +36,10 @@
         //delete_news_btn 消息刪除按鈕監聽， 使用永久性監聽器來處理按鈕點擊事件
             $("#news_data").on("click", "#delete_news_btn", function () {
                 if (confirm("確認刪除?")) {
-                    console.log($(this).data("id"));
+                    // console.log($(this).data("id"));
                     var dataJSON = {};
                     dataJSON["ID"] = $(this).data("id");
-                    console.log(JSON.stringify(dataJSON));
+                    // console.log(JSON.stringify(dataJSON));
 
                     $.ajax({
                         type: "POST",
@@ -59,7 +59,7 @@
         function news_showdata(data) {
         //整理資料儲存為二維陣列
         data.data.forEach(function (item, key) {
-               console.log(key);
+            //    console.log(key);
                if (key % 5 == 0) {
                 news_newData.push([]);
                 }
@@ -76,7 +76,7 @@
                 $("#pageList_news").append(strHTML);
             });
 
-            console.log(news_newData);
+            // console.log(news_newData);
         }
 
         function news_drawTable(page) {
@@ -89,7 +89,7 @@
         }
 
         function Cnews_showdata(data) {
-            console.log(data);
+            // console.log(data);
             if (data.state) {
                 alert("消息新增成功");    
                 location.reload();
@@ -97,7 +97,7 @@
         }
 
         function Dnews_showdata(data) {
-            console.log(data);
+            // console.log(data);
             if (data.state) {
                 alert(data.message);
                 location.reload();
