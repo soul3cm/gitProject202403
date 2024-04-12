@@ -258,19 +258,14 @@
                 });
 
 
-
-
             $( ".mapLink_post").click(function() {
                 var mapValue_post = $(this).text();                    
                 // console.log($(this).text());
                 var mapLink_post = "https://www.google.com/maps/search/?api=1&query=" + mapValue_post;
                 $('.mapLink_post').attr('href', mapLink_post);
             });
+                      
             
-           
-            
-
-
         }
 
         function get_post_count(data){

@@ -6,8 +6,6 @@ $(function(){
             $('#mapLink').attr('href', mapLink);
         });
 
-
-
         //確認發文的按鈕
         $("#postModal_check_btn").click(function(){
             var dataJSON = {};
@@ -30,8 +28,7 @@ $(function(){
                     dataType: "json",
                     success:search_post,
                     error:function(){
-                        alert("error-post-Create-api.php");
-                        
+                        alert("error-post-Create-api.php");                        
                     }
                 });
         });
@@ -48,8 +45,7 @@ $(function(){
             $("#postModal_note").val("");             
             
              
-        // 從 cookie 中讀取上次點擊的按鈕 ID        
-        // var select_town = getCookie("areaName");        
+        // 從 cookie 中讀取上次點擊的按鈕 ID           
         var PnameClicked = getCookie("PnameClicked");
         if (PnameClicked) {
             $("#" + PnameClicked).click();
