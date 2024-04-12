@@ -1,37 +1,30 @@
 // 側邊欄的部分
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
   }
   
-  /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
     document.body.style.backgroundColor = "white";
   }
 
-  // 以下是選項卡(Tabs)的部分
-  
-
+  // 以下是選項卡(Tabs)的部分 
   function openManager(managerName){
     var i, tabContent;
      tabContent = document.getElementsByClassName("tabContent");
     for (i = 0; i < tabContent.length ; i++){
       tabContent[i].style.display = "none";    
     }   
-    document.getElementById(managerName).style.display = "block";
-   
+    document.getElementById(managerName).style.display = "block";   
   }
   
   
-  // 後台會員管理系統
-    // newData是read用到的
-    // u_id  是update
-    var newData= [];
-    var u_id;
+  // 後台會員管理系統  
+    var newData= [];  // read用到的
+    var u_id; // update
     $(function(){       
         
             if (getCookie("UID02") != "") {
@@ -46,7 +39,7 @@ function openNav() {
                     dataType: "json",
                     success: showdata_Check_UID,
                     error: function () {
-                        alert("error-https://3cmproject.000webhostapp.com/project1/manager/manager-Check_UID-api.php");
+                        alert("error-manager-Check_UID-api.php");
                     }
                 });
             }else{
@@ -66,12 +59,12 @@ function openNav() {
                 dataJSON["Online"] = '0';
                 $.ajax({
                     type: "POST",
-                    url: "api/manager/manager-down-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/manager/manager-down-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success: showdata_Down_member,
                     error: function () {
-                        alert("error-api/manager/manager-down-api.php");
+                        alert("error-manager-down-api.php");
                     }
                 });
                 
@@ -81,12 +74,12 @@ function openNav() {
             $("#member_count").click(function(){                
                 $.ajax({
                     type: "GET",
-                    url: "api/manager/manager-count-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/manager/manager-count-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success: showdata_Count_member,
                     error: function () {
-                        alert("error-api/manager/manager-count-api.php");
+                        alert("error-manager-count-api.php");
                     }
                 });
                 
@@ -95,12 +88,12 @@ function openNav() {
             $("#all_logout").click(function(){
                 $.ajax({
                     type: "GET",
-                    url: "api/manager/manager-allOut-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/manager/manager-allOut-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success: showdata_allOut,
                     error: function () {
-                        alert("error-api/manager/manager-allOut-api.php");
+                        alert("error-manager-allOut-api.php");
                     }
                 });
             })
