@@ -12,12 +12,12 @@
                 console.log(JSON.stringify(dataJSON));
                 $.ajax({
                     type: "POST",
-                    url: "api/reaction/reaction-Create-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/reaction/reaction-Create-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success:Creaction_showdata,
                     error:function(){
-                        alert("error-api/reaction/reaction-Create-api.php")
+                        alert("error-reaction-Create-api.php")
                     }
                 });
         });
@@ -26,12 +26,12 @@
         // 讀取回饋資料
         $.ajax({
                         type: "GET",
-                        url: "api/reaction/reaction-Read-api.php",
+                        url: "https://3cmproject.000webhostapp.com/project1/reaction/reaction-Read-api.php",
                         async: false,
                         dataType: "json",
                         success: reaction_showdata,
                         error: function () {
-                            alert("error-api/reaction/reaction-Read-api.php");
+                            alert("error-reaction-Read-api.php");
                         }
                     });
        
@@ -48,13 +48,13 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "api/reaction/reaction-Delete-api.php",
+                        url: "https://3cmproject.000webhostapp.com/project1/reaction/reaction-Delete-api.php",
                         async: false,
                         data: JSON.stringify(dataJSON),
                         dataType: "json",
                         success: Dreaction_showdata,
                         error: function () {
-                            alert("error-api/reaction/reaction-Delete-api.php");
+                            alert("error-reaction-Delete-api.php");
                         }
                     });
                 }

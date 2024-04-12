@@ -25,23 +25,23 @@ $(function () {
     //串接資料
     $.ajax({
         type: "GET",
-        url: "api/manager/home-count-division-api.php",
+        url: "https://3cmproject.000webhostapp.com/project1/manager/home-count-division-api.php",
         async: false,
         dataType: "json",
         success: showdata_chart_division,
         error: function () {
-            alert("error-api/manager/home-count-division-api.php");
+            alert("error-home-count-division-api.php");
         }
     });
 
     $.ajax({
         type: "GET",
-        url: "api/manager/home-count-member-api.php",
+        url: "https://3cmproject.000webhostapp.com/project1/manager/home-count-member-api.php",
         async: false,
         dataType: "json",
         success: showdata_chart_member,
         error: function () {
-            alert("error-api/manager/home-count-member-api.php");
+            alert("error-home-count-member-api.php");
         }
     });
 });

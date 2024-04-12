@@ -19,12 +19,12 @@
                 console.log(JSON.stringify(dataJSON));
                 $.ajax({
                     type: "POST",
-                    url: "api/post/post-Create-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/post/post-Create-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success:Cpost_showdata,
                     error:function(){
-                        alert("error-api/post/post-Create-api.php")
+                        alert("error-post-Create-api.php")
                     }
                 });
         });
@@ -33,12 +33,12 @@
         // 讀取產品資料
         $.ajax({
                         type: "GET",
-                        url: "api/post/post-Read-api.php",
+                        url: "https://3cmproject.000webhostapp.com/project1/post/post-Read-api.php",
                         async: false,
                         dataType: "json",
                         success: post_showdata,
                         error: function () {
-                            alert("error-api/post/post-Read-api.php");
+                            alert("error-post-Read-api.php");
                         }
                     });
 
@@ -77,14 +77,14 @@
 
             $.ajax({
                 type: "POST",
-                url: "api/post/post-Update-api.php",
+                url: "https://3cmproject.000webhostapp.com/project1/post/post-Update-api.php",
                 async: false,
                 data: JSON.stringify(dataJSON),
                 dataType: "json",
                 success:  Upost_showdata,
                         
                 error: function () {
-                    alert("error-api/post/post-Update-api.php");
+                    alert("error-post-Update-api.php");
                 }
             });
         });
@@ -99,13 +99,13 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "api/post/post-Delete-api.php",
+                        url: "https://3cmproject.000webhostapp.com/project1/post/post-Delete-api.php",
                         async: false,
                         data: JSON.stringify(dataJSON),
                         dataType: "json",
                         success: Dpost_showdata,
                         error: function () {
-                            alert("error-api/post/post-Delete-api.php");
+                            alert("error-post-Delete-api.php");
                         }
                     });
                 }
