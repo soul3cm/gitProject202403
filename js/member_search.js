@@ -11,8 +11,8 @@
         if(getCookie("UID01") !=""){
                 //UID01存在，傳遞至後端api 判斷是否合法
                 var dataJSON = {};
-                dataJSON["UID01"]=getCookie("UID01");
-                console.log(JSON.stringify(dataJSON));
+                dataJSON["UID01"]=getCookie("UID01");      
+
                 $.ajax({
                     type: "POST",
                     url: "https://3cmproject.000webhostapp.com/project1/member/member-Check_UID-api.php",
@@ -32,8 +32,7 @@
                     //符合規定
                     var dataJSON = {};
                     dataJSON["UserID"] = $("#userID").val();
-                    console.log(JSON.stringify(dataJSON));
-
+                    
                     $.ajax({
                         type:"POST",
                         url:"https://3cmproject.000webhostapp.com/project1/member/member-check_ID_uni_api.php",
@@ -43,8 +42,7 @@
                         error: function(){
                             alert("error-member-check_ID_uni_api.php");
                         }
-                    });
-                    
+                    });                    
                 }else{
                     //不符合規定
                     $(this).removeClass('is-valid');
@@ -60,7 +58,6 @@
                     //符合規定
                     var dataJSON = {};
                     dataJSON["UserName"] = $("#username").val();
-                    console.log(JSON.stringify(dataJSON));
 
                     $.ajax({
                         type:"POST",
@@ -132,10 +129,10 @@
             //監聽 checkbox #chk01
             $("#chk01").change(function(){
                 if($(this).is(":checked")){
-                    console.log("遵守");
+                    // console.log("遵守");
                     flag_chk01 = true;
                 }else{
-                    console.log("不遵守");  
+                    // console.log("不遵守");  
                     flag_chk01 = false;  
                 }
                 
@@ -151,8 +148,6 @@
                     dataJSON["UserName"] = $("#username").val();
                     dataJSON["Password"] = $("#password").val();
                     dataJSON["Email"]    = $("#email").val();
-                    console.log(JSON.stringify(dataJSON));
-
                     
 
                     //傳遞至後端執行註冊行為
@@ -174,13 +169,9 @@
 
             //登入按鈕監聽 #login_btn
             $("#login_btn").click(function(){
-                // console.log($("#login_username").val()+$("#login_password").val());
-                //{"Username":"XX", "Password":"XXX"}
                 var dataJSON ={};
                 dataJSON["UserID"]=$("#login_userID").val();
                 dataJSON["Password"]=$("#login_password").val();
-                console.log(JSON.stringify(dataJSON));
-
                 //傳遞至後端執行登入行為
                 $.ajax({
                     type:"POST",
@@ -208,7 +199,6 @@
     });
 
     function showdata(data){
-            console.log(data);
             if(data.state){
                 alert(data.message);
                 location.reload();
@@ -218,7 +208,7 @@
         }
 
         function showdata_check_ID_uni(data) {
-            console.log(data);
+            // console.log(data);
             if (data.state) {
                 //帳號不存在, 可以使用!
                 $("#userID").removeClass('is-invalid');
@@ -226,7 +216,6 @@
                 flag_userID = true;
                 // 顯示帳號符合規則的訊息
                  $("#userID + .valid-feedback").text("帳號不存在，可以使用").show();
-
                 // 隱藏帳號不符合規則的訊息
                 $("#userID + .invalid-feedback").hide();
             } else {
@@ -234,7 +223,6 @@
                 $("#userID").removeClass('is-valid');
                 $("#userID").addClass('is-invalid');
                 flag_userID = false;
-
                 $("#userID + .invalid-feedback").text("名稱存在，不可以使用!").show();
 
                 // 隱藏帳號符合規則的訊息
@@ -243,7 +231,7 @@
         }
 
         function showdata_check_Name_uni(data) {
-            console.log(data);
+            // console.log(data);
             if (data.state) {
                 //名稱不存在, 可以使用!
                 $("#username").removeClass('is-invalid');
@@ -256,7 +244,6 @@
                 $("#username").removeClass('is-valid');
                 $("#username").addClass('is-invalid');
                 flag_username = false;
-
                 $("#username + .invalid-feedback").text("名稱存在，不可以使用!").show();
 
                 // 隱藏帳號符合規則的訊息
@@ -265,10 +252,8 @@
         }
 
         function showdata_login(data){
-            console.log(data);
             if(data.state){
                 alert(data.message);
-                //console.log(data.data[0].UID01);
                 var uid01 = data.data[0].UID01;
                 setCookie("UID01", uid01, 7);
 
@@ -286,7 +271,7 @@
         }
 
         function showdata_Check_UID(data){
-            console.log(data);
+            // console.log(data);
             if(data.state){
                 //驗證成功
                 $("#user_message").text(data.data[0].Username+"登入中!");
@@ -296,8 +281,7 @@
                 $("#logout_btn").removeClass("d-none");
                 $("#postModal_userName").val(data.data[0].Username);
             }else{
-                //驗證失敗
-               
+                //驗證失敗               
             }
         }
 
