@@ -22,15 +22,15 @@ $(function(){
                 dataJSON["GoogleMap"]=$("#locationInput").val();
                 dataJSON["Note"]=$("#postModal_note").val();
                 
-                console.log(JSON.stringify(dataJSON));
+                // console.log(JSON.stringify(dataJSON));
                 $.ajax({
                     type: "POST",
-                    url: "api/post/post-Create-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/post/post-Create-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success:search_post,
                     error:function(){
-                        alert("error-api/post/post-Create-api.php");
+                        alert("error-post-Create-api.php");
                         
                     }
                 });
@@ -38,7 +38,7 @@ $(function(){
     });
 
     function search_post(data) {
-        console.log(data);
+        // console.log(data);
         if (data.state) {
             $("#snackbar").text("貼文發布成功");
                         snackbar();
