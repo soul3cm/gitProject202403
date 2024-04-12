@@ -44,12 +44,12 @@ $(function(){
               
         $.ajax({
             type: "post",
-            url: "api/search/search-content-api.php",
+            url: "https://3cmproject.000webhostapp.com/project1/search/search-content-api.php",
             data: JSON.stringify(dataJSON),
             dataType: "json",
             success: showdata_content,
             error: function () {
-                alert("error-api/search/search-content-api.php");
+                alert("error-search-content-api.php");
             }
         });
 
@@ -58,12 +58,12 @@ $(function(){
         //這邊的success在 search_map.js
         $.ajax({
             type: "post",
-            url: "api/search/search-Read-Pname-api.php",
+            url: "https://3cmproject.000webhostapp.com/project1/search/search-Read-Pname-api.php",
             data: JSON.stringify(dataJSON),
             dataType: "json",
             success:  showdata_town_post,
             error: function () {
-                alert("error-api/search/search-Read-Pname-api.php");
+                alert("error-search-Read-Pname-api.php");
             }
         });
 
