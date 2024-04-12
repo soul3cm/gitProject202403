@@ -69,7 +69,7 @@
                         dataType:"json",
                         success: showdata_check_Name_uni,
                         error: function(){
-                            alert("error-api/member/member-check_Name_uni_api.php");
+                            alert("error-member-check_Name_uni_api.php");
                         }
                     });
                     
@@ -163,7 +163,7 @@
                         dataType: "json",
                         success: showdata,
                         error: function(){
-                            alert("error-api/member/member-Create-api.php");
+                            alert("error-member-Create-api.php");
                         }
                     });
 
@@ -184,12 +184,12 @@
                 //傳遞至後端執行登入行為
                 $.ajax({
                     type:"POST",
-                    url: "api/member/member-login_api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/member/member-login_api.php",
                     data: JSON.stringify(dataJSON),
                     dataType:"json",
                     success: showdata_login,
                     error: function(){
-                        alert("error-api/member/member-login_api.php");
+                        alert("error-member-login_api.php");
                     }
                 });
             });
