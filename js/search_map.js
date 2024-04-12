@@ -81,22 +81,22 @@
                         }
                     });
 
-                    for(i=0;i<=(data_Pname.length-1);i++){
-                        dataJSON["Division"]=data_Pname[i];
-                        // console.log(dataJSON["Division"]);
+                    // for(i=0;i<=(data_Pname.length-1);i++){
+                    //     dataJSON["Division"]=data_Pname[i];
+                    //     // console.log(dataJSON["Division"]);
                     
-                        $.ajax({
-                            type: "post",
-                            url: "api/search/search-count-division-api.php",
-                            async: false,
-                            data: JSON.stringify(dataJSON),
-                            dataType: "json",
-                            success: showdata_count_post,
-                            error: function () {
-                                alert("error-api/search/search-count-division-api.php");
-                            }
-                        });
-                    }
+                    //     $.ajax({
+                    //         type: "post",
+                    //         url: "api/search/search-count-division-api.php",
+                    //         async: false,
+                    //         data: JSON.stringify(dataJSON),
+                    //         dataType: "json",
+                    //         success: showdata_count_post,
+                    //         error: function () {
+                    //             alert("error-api/search/search-count-division-api.php");
+                    //         }
+                    //     });
+                    // }
 
                 });
 

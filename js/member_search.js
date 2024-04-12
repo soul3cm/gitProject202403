@@ -15,12 +15,12 @@
                 console.log(JSON.stringify(dataJSON));
                 $.ajax({
                     type: "POST",
-                    url: "api/member/member-Check_UID-api.php",
+                    url: "https://3cmproject.000webhostapp.com/project1/member/member-Check_UID-api.php",
                     data: JSON.stringify(dataJSON),
                     dataType: "json",
                     success:showdata_Check_UID,
                     error:function(){
-                        alert("error-api/member/member-Check_UID-api.php")
+                        alert("error-member-Check_UID-api.php")
                     }
                 });
             }
@@ -36,12 +36,12 @@
 
                     $.ajax({
                         type:"POST",
-                        url:"api/member/member-check_ID_uni_api.php",
+                        url:"https://3cmproject.000webhostapp.com/project1/member/member-check_ID_uni_api.php",
                         data:JSON.stringify(dataJSON),
                         dataType:"json",
                         success: showdata_check_ID_uni,
                         error: function(){
-                            alert("error-api/member/member-check_ID_uni_api.php");
+                            alert("error-member-check_ID_uni_api.php");
                         }
                     });
                     
@@ -64,7 +64,7 @@
 
                     $.ajax({
                         type:"POST",
-                        url:"api/member/member-check_Name_uni_api.php",
+                        url:"https://3cmproject.000webhostapp.com/project1/member/member-check_Name_uni_api.php",
                         data:JSON.stringify(dataJSON),
                         dataType:"json",
                         success: showdata_check_Name_uni,
@@ -158,7 +158,7 @@
                     //傳遞至後端執行註冊行為
                     $.ajax({
                         type: "POST",
-                        url: "api/member/member-Create-api.php",
+                        url: "https://3cmproject.000webhostapp.com/project1/member/member-Create-api.php",
                         data: JSON.stringify(dataJSON),
                         dataType: "json",
                         success: showdata,
