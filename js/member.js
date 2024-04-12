@@ -216,7 +216,7 @@
         }
 
         function showdata_check_ID_uni(data) {
-            console.log(data);
+            // console.log(data);
             if (data.state) {
                 //帳號不存在, 可以使用!
                 $("#userID").removeClass('is-invalid');

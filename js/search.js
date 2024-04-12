@@ -13,12 +13,12 @@ $(function(){
 
     $.ajax({
         type: "GET",
-        url: "api/product/product-Read-api.php",
+        url: "https://3cmproject.000webhostapp.com/project1/product/product-Read-api.php",
         async: false,
         dataType: "json",
         success:showdata_search_product,
         error: function () {
-            alert("error-api/product/product-Read-api.php");
+            alert("error-product-Read-api.php");
         }
     });
 
@@ -30,8 +30,8 @@ $(function(){
 
     // 點擊產品出現簡介
     $("body").on("click" ," #myList .Pname", function () {                
-        console.log($(this).data("division") +','+$(this).text());
-        console.log(this.id);
+        // console.log($(this).data("division") +','+$(this).text());
+        // console.log(this.id);
         // 點擊手風琴按鈕保存到 cookie 中
         var buttonid_panel = $(this).attr('id');
         setCookie('PnameClicked',buttonid_panel, 1); // 保存1天
@@ -40,7 +40,7 @@ $(function(){
         dataJSON["Pname"]=$(this).text();
         // 底下這串在 search_map.js
         
-        console.log(dataJSON);
+        // console.log(dataJSON);
               
         $.ajax({
             type: "post",
@@ -54,7 +54,7 @@ $(function(){
         });
 
         dataJSON["Addr"]=selected_cityName+selected_townName;
-        console.log(dataJSON);
+        // console.log(dataJSON);
         //這邊的success在 search_map.js
         $.ajax({
             type: "post",
@@ -105,20 +105,20 @@ $(function(){
         
         $("#myList").empty();
         // console.log(data);
-        console.log(data.data);
+        // console.log(data.data);
     
         var products=data.data;
-        console.log(products[0].division);
+        // console.log(products[0].division);
     
     
         // 將所有的分類不重複地取出
         const categories = Array.from(new Set(data.data.map(function(item) {
             return item.division;
         })));  
-        console.log(categories);
+        // console.log(categories);
         // 將分類放到全域變數
         data_Pname =categories;
-        console.log(data_Pname);
+        // console.log(data_Pname);
 
         const contents = {};
         for (const category of categories) {
@@ -131,7 +131,7 @@ $(function(){
         }
         
         // 印出手風琴
-        console.log(contents);
+        // console.log(contents);
 
         $("#myList").empty();
         let count_panel = 0 ;
@@ -175,7 +175,7 @@ $(function(){
 
     function showdata_content(data){
         $("#product_content").empty();
-        console.log(data.data[0].content);
+        // console.log(data.data[0].content);
         var strHTML = '<p>產品簡介 : '+data.data[0].content +'</p>';
         $("#product_content").append(strHTML);
     }
